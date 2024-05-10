@@ -70,6 +70,7 @@
             this.exit.Size = new System.Drawing.Size(22, 24);
             this.exit.TabIndex = 1;
             this.exit.Text = "X";
+            this.exit.Click += new System.EventHandler(this.exit_Click);
             // 
             // label2
             // 
@@ -119,6 +120,7 @@
             this.log_password.Location = new System.Drawing.Point(441, 340);
             this.log_password.Multiline = true;
             this.log_password.Name = "log_password";
+            this.log_password.PasswordChar = '*';
             this.log_password.Size = new System.Drawing.Size(448, 50);
             this.log_password.TabIndex = 6;
             this.log_password.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
@@ -133,6 +135,7 @@
             this.log_showpass.TabIndex = 7;
             this.log_showpass.Text = "Show Password";
             this.log_showpass.UseVisualStyleBackColor = true;
+            this.log_showpass.CheckedChanged += new System.EventHandler(this.log_showpass_CheckedChanged);
             // 
             // log_btn
             // 
@@ -167,8 +170,8 @@
             this.log_signupbtn.BackColor = System.Drawing.Color.Maroon;
             this.log_signupbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.log_signupbtn.FlatAppearance.BorderSize = 0;
-            this.log_signupbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Purple;
-            this.log_signupbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Purple;
+            this.log_signupbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.log_signupbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.log_signupbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.log_signupbtn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.log_signupbtn.ForeColor = System.Drawing.Color.White;
@@ -178,6 +181,7 @@
             this.log_signupbtn.TabIndex = 9;
             this.log_signupbtn.Text = "SIGNUP";
             this.log_signupbtn.UseVisualStyleBackColor = false;
+            this.log_signupbtn.Click += new System.EventHandler(this.log_signupbtn_Click);
             // 
             // pictureBox1
             // 
@@ -219,6 +223,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -9,3 +9,4 @@ D:\1.Programs\C#\Hardware Management System - C#\Hardware-Management-System\Hard
 D:\1.Programs\C#\Hardware Management System - C#\Hardware-Management-System\Hardware-Management-System\Hardware-Management-System\obj\Debug\Hardware-Management-System.csproj.CoreCompileInputs.cache
 D:\1.Programs\C#\Hardware Management System - C#\Hardware-Management-System\Hardware-Management-System\Hardware-Management-System\obj\Debug\Hardware-Management-System.exe
 D:\1.Programs\C#\Hardware Management System - C#\Hardware-Management-System\Hardware-Management-System\Hardware-Management-System\obj\Debug\Hardware-Management-System.pdb
+D:\1.Programs\C#\Hardware Management System - C#\Hardware-Management-System\Hardware-Management-System\Hardware-Management-System\obj\Debug\Hardware_Management_System.RegisterForm.resources

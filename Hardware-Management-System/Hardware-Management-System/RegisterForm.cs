@@ -10,24 +10,14 @@ using System.Windows.Forms;
 
 namespace Hardware_Management_System
 {
-    public partial class Form1 : Form
+    public partial class RegisterForm : Form
     {
-        public Form1()
+        public RegisterForm()
         {
             InitializeComponent();
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void log_password_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -37,16 +27,16 @@ namespace Hardware_Management_System
             Application.Exit();
         }
 
-        private void log_signupbtn_Click(object sender, EventArgs e)
+        private void reg_signinbtn_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm();
-            registerForm.Show();
+            Form1 loginForm = new Form1();
+            loginForm.Show();
             this.Hide();
         }
 
         private void log_showpass_CheckedChanged(object sender, EventArgs e)
         {
-            log_password.PasswordChar = log_showpass.Checked ? '\0' : '*';
+            reg_password.PasswordChar = reg_showpass.Checked ? '\0' : '*';
         }
     }
 }
