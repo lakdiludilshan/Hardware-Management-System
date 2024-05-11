@@ -62,6 +62,7 @@
             this.reg_btn.TabIndex = 17;
             this.reg_btn.Text = "SIGNUP";
             this.reg_btn.UseVisualStyleBackColor = false;
+            this.reg_btn.Click += new System.EventHandler(this.reg_btn_Click);
             // 
             // reg_showpass
             // 

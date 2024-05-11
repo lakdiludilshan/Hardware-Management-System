@@ -153,6 +153,7 @@
             this.log_btn.TabIndex = 8;
             this.log_btn.Text = "LOGIN";
             this.log_btn.UseVisualStyleBackColor = false;
+            this.log_btn.Click += new System.EventHandler(this.log_btn_Click);
             // 
             // label5
             // 
