@@ -83,6 +83,9 @@ namespace Hardware_Management_System
                             {
                                 MessageBox.Show("Login SuccessFully!!"
                                     , "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.Hide();
+                                MainForm main = new MainForm();
+                                main.Show();
                             }
                             else
                             {
