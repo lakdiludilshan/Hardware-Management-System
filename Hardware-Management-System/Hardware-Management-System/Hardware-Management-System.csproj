@@ -86,6 +86,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
@@ -106,6 +107,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\SHlogo.jpg" />
+    <None Include="Resources\pngwing.com.png" />
+    <None Include="Resources\pngwing.com %2818%29.png" />
+    <None Include="Resources\pngwing.com %2817%29.png" />
+    <None Include="Resources\pngwing.com %2816%29.png" />
+    <None Include="Resources\pngwing.com %2815%29.png" />
+    <None Include="Resources\pngwing.com %2814%29.png" />
+    <None Include="Resources\pngwing.com %2813%29.png" />
+    <None Include="Resources\pngwing.com %2812%29.png" />
+    <None Include="Resources\pngwing.com %2811%29.png" />
+    <None Include="Resources\pngwing.com %2810%29.png" />
+    <None Include="Resources\pngwing.com %289%29.png" />
+    <None Include="Resources\pngwing.com %288%29.png" />
+    <None Include="Resources\pngwing.com %287%29.png" />
+    <None Include="Resources\pngwing.com %286%29.png" />
+    <None Include="Resources\pngwing.com %285%29.png" />
+    <None Include="Resources\pngwing.com %284%29.png" />
+    <None Include="Resources\pngwing.com %283%29.png" />
+    <None Include="Resources\pngwing.com %282%29.png" />
+    <None Include="Resources\pngwing.com %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,3 +11,5 @@ D:\1.Programs\C#\Hardware Management System - C#\Hardware-Management-System\Hard
 D:\1.Programs\C#\Hardware Management System - C#\Hardware-Management-System\Hardware-Management-System\Hardware-Management-System\obj\Debug\Hardware-Management-System.pdb
 D:\1.Programs\C#\Hardware Management System - C#\Hardware-Management-System\Hardware-Management-System\Hardware-Management-System\obj\Debug\Hardware_Management_System.RegisterForm.resources
 D:\1.Programs\C#\Hardware Management System - C#\Hardware-Management-System\Hardware-Management-System\Hardware-Management-System\obj\Debug\Hardware_Management_System.MainForm.resources
+D:\1.Programs\C#\Hardware Management System - C#\Hardware-Management-System\Hardware-Management-System\Hardware-Management-System\bin\Debug\Guna.UI2.dll
+D:\1.Programs\C#\Hardware Management System - C#\Hardware-Management-System\Hardware-Management-System\Hardware-Management-System\obj\Debug\Hardware-Management-System.csproj.CopyComplete
