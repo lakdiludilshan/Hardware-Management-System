@@ -24,7 +24,12 @@ namespace Hardware_Management_System
 
         private void button2_Click(object sender, EventArgs e)
         {
+            btn_max.PerformClick();
+        }
 
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
