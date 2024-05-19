@@ -46,5 +46,10 @@ namespace Hardware_Management_System
         {
 
         }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
