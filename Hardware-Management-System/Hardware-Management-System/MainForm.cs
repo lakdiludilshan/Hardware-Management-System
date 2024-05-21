@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hardware_Management_System.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,6 +51,34 @@ namespace Hardware_Management_System
         private void guna2Button3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void AddControls(Form F)
+        {
+            this.CenterPanel.Controls.Clear();
+            F.Dock = DockStyle.Fill;
+            F.TopLevel = false;
+            CenterPanel.Controls.Add(F);
+            F.Show();
+        }
+        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btn_max_Click(object sender, EventArgs e)
+        {
+            btn_max.PerformClick();
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_user_Click(object sender, EventArgs e)
+        {
+            AddControls(new fromUserView());
         }
     }
 }

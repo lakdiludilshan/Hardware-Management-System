@@ -10,24 +10,19 @@ using System.Windows.Forms;
 
 namespace Hardware_Management_System
 {
-    public partial class SampleView : Form
+    public partial class SampleAdd : Form
     {
-        public SampleView()
+        public SampleAdd()
         {
             InitializeComponent();
         }
 
-        private void SampleView_Load(object sender, EventArgs e)
+        public virtual void btn_close_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
-        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public virtual void btn_add_click(object sender, EventArgs e)
+        public virtual void btn_save_Click(object sender, EventArgs e)
         {
 
         }

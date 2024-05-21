@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.log_signupbtn = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.exit = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,10 +42,6 @@
             this.log_password = new System.Windows.Forms.TextBox();
             this.log_showpass = new System.Windows.Forms.CheckBox();
             this.log_btn = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.log_signupbtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +59,59 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(398, 624);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(96, 85);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(210, 205);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(43, 315);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(305, 34);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Inventory Management";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // log_signupbtn
+            // 
+            this.log_signupbtn.BackColor = System.Drawing.Color.Maroon;
+            this.log_signupbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.log_signupbtn.FlatAppearance.BorderSize = 0;
+            this.log_signupbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.log_signupbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.log_signupbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.log_signupbtn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.log_signupbtn.ForeColor = System.Drawing.Color.White;
+            this.log_signupbtn.Location = new System.Drawing.Point(42, 549);
+            this.log_signupbtn.Name = "log_signupbtn";
+            this.log_signupbtn.Size = new System.Drawing.Size(306, 50);
+            this.log_signupbtn.TabIndex = 9;
+            this.log_signupbtn.Text = "SIGNUP";
+            this.log_signupbtn.UseVisualStyleBackColor = false;
+            this.log_signupbtn.Click += new System.EventHandler(this.log_signupbtn_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(92, 511);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(204, 24);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Register your Account";
             // 
             // exit
             // 
@@ -154,58 +207,6 @@
             this.log_btn.Text = "LOGIN";
             this.log_btn.UseVisualStyleBackColor = false;
             this.log_btn.Click += new System.EventHandler(this.log_btn_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(92, 511);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(204, 24);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Register your Account";
-            // 
-            // log_signupbtn
-            // 
-            this.log_signupbtn.BackColor = System.Drawing.Color.Maroon;
-            this.log_signupbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.log_signupbtn.FlatAppearance.BorderSize = 0;
-            this.log_signupbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.log_signupbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.log_signupbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.log_signupbtn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.log_signupbtn.ForeColor = System.Drawing.Color.White;
-            this.log_signupbtn.Location = new System.Drawing.Point(42, 549);
-            this.log_signupbtn.Name = "log_signupbtn";
-            this.log_signupbtn.Size = new System.Drawing.Size(306, 50);
-            this.log_signupbtn.TabIndex = 9;
-            this.log_signupbtn.Text = "SIGNUP";
-            this.log_signupbtn.UseVisualStyleBackColor = false;
-            this.log_signupbtn.Click += new System.EventHandler(this.log_signupbtn_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(96, 85);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(210, 205);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(43, 315);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(305, 34);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Inventory Management";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // Form1
             // 
