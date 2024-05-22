@@ -34,6 +34,7 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btn_user = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
@@ -47,7 +48,6 @@
             this.btn_max = new Guna.UI2.WinForms.Guna2ControlBox();
             this.btn_exit = new Guna.UI2.WinForms.Guna2ControlBox();
             this.CenterPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.btn_user = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -73,6 +73,31 @@
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(264, 731);
             this.guna2Panel2.TabIndex = 3;
+            // 
+            // btn_user
+            // 
+            this.btn_user.BackColor = System.Drawing.Color.Transparent;
+            this.btn_user.BorderRadius = 16;
+            this.btn_user.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_user.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_user.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_user.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_user.FillColor = System.Drawing.Color.Firebrick;
+            this.btn_user.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_user.ForeColor = System.Drawing.Color.Black;
+            this.btn_user.Image = global::Hardware_Management_System.Properties.Resources.pngwing_com__6_;
+            this.btn_user.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btn_user.ImageOffset = new System.Drawing.Point(12, 0);
+            this.btn_user.ImageSize = new System.Drawing.Size(23, 23);
+            this.btn_user.Location = new System.Drawing.Point(27, 632);
+            this.btn_user.Name = "btn_user";
+            this.btn_user.Size = new System.Drawing.Size(208, 57);
+            this.btn_user.TabIndex = 8;
+            this.btn_user.Text = "User";
+            this.btn_user.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btn_user.TextOffset = new System.Drawing.Point(16, 0);
+            this.btn_user.UseTransparentBackground = true;
+            this.btn_user.Click += new System.EventHandler(this.btn_user_Click);
             // 
             // guna2Button2
             // 
@@ -304,31 +329,7 @@
             this.CenterPanel.Name = "CenterPanel";
             this.CenterPanel.Size = new System.Drawing.Size(1003, 731);
             this.CenterPanel.TabIndex = 5;
-            // 
-            // btn_user
-            // 
-            this.btn_user.BackColor = System.Drawing.Color.Transparent;
-            this.btn_user.BorderRadius = 16;
-            this.btn_user.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_user.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_user.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_user.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_user.FillColor = System.Drawing.Color.Firebrick;
-            this.btn_user.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_user.ForeColor = System.Drawing.Color.Black;
-            this.btn_user.Image = global::Hardware_Management_System.Properties.Resources.pngwing_com__6_;
-            this.btn_user.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btn_user.ImageOffset = new System.Drawing.Point(12, 0);
-            this.btn_user.ImageSize = new System.Drawing.Size(23, 23);
-            this.btn_user.Location = new System.Drawing.Point(27, 632);
-            this.btn_user.Name = "btn_user";
-            this.btn_user.Size = new System.Drawing.Size(208, 57);
-            this.btn_user.TabIndex = 8;
-            this.btn_user.Text = "User";
-            this.btn_user.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btn_user.TextOffset = new System.Drawing.Point(16, 0);
-            this.btn_user.UseTransparentBackground = true;
-            this.btn_user.Click += new System.EventHandler(this.btn_user_Click);
+            this.CenterPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.CenterPanel_Paint);
             // 
             // MainForm
             // 

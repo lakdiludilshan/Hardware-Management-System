@@ -80,5 +80,10 @@ namespace Hardware_Management_System
         {
             AddControls(new fromUserView());
         }
+
+        private void CenterPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

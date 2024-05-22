@@ -22,7 +22,7 @@ namespace Hardware_Management_System
 
         }
 
-        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
+        public virtual void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -65,6 +65,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\fromUserAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\fromUserAdd.Designer.cs">
+      <DependentUpon>fromUserAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterForm.cs">
@@ -84,6 +90,12 @@
     </Compile>
     <Compile Include="SampleView.Designer.cs">
       <DependentUpon>SampleView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\fromUserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fromUserView.Designer.cs">
+      <DependentUpon>fromUserView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -110,6 +122,9 @@
     <EmbeddedResource Include="SampleView.resx">
       <DependentUpon>SampleView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\fromUserView.resx">
+      <DependentUpon>fromUserView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -126,6 +141,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\SHlogo.jpg" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\editing.png" />
     <None Include="Resources\add.png" />
     <None Include="Resources\pngwing.com.png" />
     <None Include="Resources\pngwing.com %2818%29.png" />
@@ -147,9 +164,6 @@
     <None Include="Resources\pngwing.com %282%29.png" />
     <None Include="Resources\pngwing.com %281%29.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="View\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
