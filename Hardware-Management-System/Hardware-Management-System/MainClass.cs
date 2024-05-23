@@ -183,5 +183,9 @@ namespace Hardware_Management_System
             cb.SelectedIndex = -1;
         }
 
+        internal static void LoadData()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

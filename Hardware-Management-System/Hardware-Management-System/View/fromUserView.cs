@@ -40,6 +40,9 @@ namespace Hardware_Management_System.View
             lb.Items.Add(uvUsername);
             lb.Items.Add(uvPass);
             lb.Items.Add(uvPhone);
+
+            string qry = @"Select userId, uName, uUsername";
+            MainClass.LoadData();
         }
     }
 }
