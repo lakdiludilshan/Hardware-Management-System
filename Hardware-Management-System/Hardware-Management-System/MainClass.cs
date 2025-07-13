@@ -1,54 +1,79 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Reflection;
-using System.Security.Permissions;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.UI.WebControls;
+using System.Collections.Generic;
+using System.Collections;
 using System.Windows.Forms;
 using System.Drawing;
-using System.Collections;
-using System.Reflection;
 using System.IO;
+
 
 namespace Hardware_Management_System
 {
     internal class MainClass
     {
-        //public static readonly string con_string = "Data Source"
+        // 🔧 Define your connection string here
+        private static readonly string con_string = "Data Source=LAKDILU\\SQLEXPRESS;Initial Catalog=\"Hardware management system\";Integrated Security=True;Trust Server Certificate=True";
         public static SqlConnection con = new SqlConnection(con_string);
 
-        //Method to check user validation
 
-        public static bool IsValidUser(string user, string password)
+
+        // 🔧 User credentials (should ideally not be global like this)
+        private static string _user;
+        private static Image _img;
+
+        public static string USER
         {
-            bool IsValid = false;
-
-            string qry = @"Select * from users where username ='" + user + "' and upass ='" + pass + "' ";
-            SqlCommand cmd = new SqlCommand();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-
-            if (dt.Rows.Count > 0)
-            {
-                IsValid = true;
-                user = dt.Rows[0]["uName"].ToString();
-
-                Byte[] imageArray = (byte[])dt.Rows[0]["uImage"];
-                byte[] imageByteArray = imageArray;
-                IMG = Image.FromStream(new MemoryStream(imageArray));
-            }
-
-            return IsValid;
-
+            get { return _user; }
+            private set { _user = value; }
         }
 
-        public static void StopBuffering(Panel ctr, bool doubleBuffer)
+        public static Image IMG
+        {
+            get { return _img; }
+            private set { _img = value; }
+        }
+
+        // ✅ Check user validation with parameterized query
+        public static bool IsValidUser(string user, string password)
+        {
+            bool isValid = false;
+            string qry = "SELECT * FROM users WHERE username = @user AND upass = @pass";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(qry, con);
+                cmd.Parameters.AddWithValue("@user", user);
+                cmd.Parameters.AddWithValue("@pass", password);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    isValid = true;
+                    USER = dt.Rows[0]["uName"].ToString();
+
+                    Byte[] imageArray = (byte[])dt.Rows[0]["uImage"];
+                    byte[] imageByteArray = imageArray;
+                    IMG = Image.FromStream(new MemoryStream(imageArray));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Login Error");
+            }
+
+            return isValid;
+        }
+
+        // ✅ Enable/Disable double buffering on a Panel
+        public static void StopBuffering(System.Windows.Forms.Panel ctr, bool doubleBuffer)
         {
             try
             {
@@ -56,64 +81,49 @@ namespace Hardware_Management_System
                     BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
                     null, ctr, new object[] { doubleBuffer });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
 
-        //create property for username
-
-        public static string user;
-
-        public static string USER
-        {
-            get { return user; }
-            private set { user = value; }
-        }
-
-        public static Image img;
-
-        public static Image IMG
-        {
-            get { return img; }
-            private set { img = value; }
-        }
-
-        //Method for crud operations
-
+        // ✅ Generic SQL execution with parameters
         public static int SQ1(string qry, Hashtable ht)
         {
             int res = 0;
 
             try
             {
-                SqlCommand cmd = new SqlCommand(qry, con);
-                cmd.CommandType = CommandType.Text;
-
-                foreach (DictionaryEntry item in ht)
+                using (SqlCommand cmd = new SqlCommand(qry, con))
                 {
-                    cmd.Parameters.AddWithValue(item.Key.ToString(), item.Value);
+                    cmd.CommandType = CommandType.Text;
+
+                    foreach (DictionaryEntry item in ht)
+                    {
+                        cmd.Parameters.AddWithValue(item.Key.ToString(), item.Value);
+                    }
+
+                    if (con.State == ConnectionState.Closed) con.Open();
+                    res = cmd.ExecuteNonQuery();
                 }
-                if (con.State == ConnectionState.Closed) { con.Open(); }
-                res = cmd.ExecuteNonQuery();
-                if (con.State == ConnectionState.Open) { con.Close(); }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
-                con.Close();
+                MessageBox.Show(ex.ToString(), "DB Error");
             }
+            finally
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+            }
+
             return res;
         }
 
-        //for loading data from database
-
-        public static void LoadData(string qry, DataGridView gv, ListBox lb)
+        // ✅ Load data from DB into DataGridView and bind columns based on ListBox items
+        public static void LoadData(string qry, DataGridView gv, System.Windows.Forms.ListBox lb)
         {
-            //serial no in gridview
-
             gv.CellFormatting += new DataGridViewCellFormattingEventHandler(gv_CellFormatting);
+
             try
             {
                 SqlCommand cmd = new SqlCommand(qry, con);
@@ -122,14 +132,15 @@ namespace Hardware_Management_System
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                for(int i=0; i<lb.Items.Count; i++)
+                for (int i = 0; i < lb.Items.Count; i++)
                 {
-                    string colNam1 = ((DataGridViewColumn)lb.Items[i]).Name;
-                    gv.Columns[colNam1].DataPropertyName = dt.Columns[i].ToString();
+                    string colName = ((DataGridViewColumn)lb.Items[i]).Name;
+                    gv.Columns[colName].DataPropertyName = dt.Columns[i].ColumnName;
                 }
+
                 gv.DataSource = dt;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 con.Close();
@@ -138,7 +149,7 @@ namespace Hardware_Management_System
 
         private static void gv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            Guna.UI2.WinForms.Guna2DataGridView gv = (Guna.UI2.WinForms.Guna2DataGridView)sender;
+            Guna.UI.WinForms.GunaDataGridView gv = (Guna.UI.WinForms.GunaDataGridView)sender;
             int count = 0;
 
             foreach (DataGridViewRow row in gv.Rows)
@@ -148,44 +159,58 @@ namespace Hardware_Management_System
             }
         }
 
+        // ✅ Show a blurred background modal
         public static void BlurBackground(Form Model)
         {
-            Form Background = new Form();
+            Form background = new Form();
             using (Model)
             {
-                Background.StartPosition = FormStartPosition.Manual;
-                Background.FormBorderStyle = FormBorderStyle.None;
-                Background.Opacity = 0.5d;
-                Background.BackColor = Color.Black;
-                Background.Size = MainForm.Instance.Size;
-                Background.Location = MainForm.Instance.Location;
-                Background.ShowInTaskbar = false;
-                Background.Show();
-                Model.Owner = Background;
-                Model.ShowDialog(Background);
-                Background.Dispose();
+                background.StartPosition = FormStartPosition.Manual;
+                background.FormBorderStyle = FormBorderStyle.None;
+                background.Opacity = 0.5d;
+                background.BackColor = Color.Black;
+
+                // 🔧 MainForm.Instance should be declared in MainForm.cs
+                // Example:
+                // public static MainForm Instance { get; private set; }
+                // Instance = this; in the MainForm constructor.
+                // Uncomment the following lines after ensuring Instance is implemented
+
+                background.Size = MainForm.Instance.Size;
+                background.Location = MainForm.Instance.Location;
+                background.ShowInTaskbar = false;
+                background.Show();
+                Model.Owner = background;
+                Model.ShowDialog(background);
+                background.Dispose();
+            }     
+        }
+
+        // ✅ Fill ComboBox from database
+        public static void CBFill(string qry, ComboBox cb)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(qry, con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                cb.DisplayMember = "name"; // Ensure column exists in result
+                cb.ValueMember = "Id";     // Ensure column exists in result
+                cb.DataSource = dt;
+                cb.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ComboBox Fill Error");
             }
         }
 
-        //for cb fill
-
-        public static void CBFill(string qry, ComboBox cb)
-        {
-            SqlCommand cmd = new SqlCommand(qry, con);
-            cmd.CommandType = CommandType.Text;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            cb.DisplayMember = "name";
-            cb.ValueMember = "Id";
-            cb.DataSource = dt;
-            cb.SelectedIndex = -1;
-        }
-
+        // ❌ Not implemented method stub
         internal static void LoadData()
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("LoadData with no parameters is not yet implemented.");
         }
     }
 }

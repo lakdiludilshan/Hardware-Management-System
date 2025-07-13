@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace Hardware_Management_System
 {
-    public partial class RegisterForm : Form
+    public partial class RegisterForm : Sample
     {
         SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Lakdilu\Documents\hardware.mdf;Integrated Security=True;Connect Timeout=30");
         public RegisterForm()
@@ -25,14 +25,9 @@ namespace Hardware_Management_System
 
         }
 
-        private void exit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void reg_signinbtn_Click(object sender, EventArgs e)
         {
-            Form1 loginForm = new Form1();
+            LoginForm loginForm = new LoginForm();
             loginForm.Show();
             this.Hide();
         }
@@ -88,7 +83,7 @@ namespace Hardware_Management_System
                                     MessageBox.Show("Registered Successfully!!"
                                         , "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                    Form1 loginForm = new Form1();
+                                    LoginForm loginForm = new LoginForm();
                                     loginForm.Show();
                                     this.Hide();
                                 }
@@ -108,6 +103,16 @@ namespace Hardware_Management_System
 
                 }
             }
+        }
+
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
