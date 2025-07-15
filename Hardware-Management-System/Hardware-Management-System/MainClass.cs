@@ -17,7 +17,7 @@ namespace Hardware_Management_System
     internal class MainClass
     {
         // 🔧 Define your connection string here
-        private static readonly string con_string = "Data Source=LAKDILU\\SQLEXPRESS;Initial Catalog=\"Hardware management system\";Integrated Security=True;Trust Server Certificate=True";
+        private static readonly string con_string = "Data Source=LAKDILU\\SQLEXPRESS;Initial Catalog=\"Hardware management system\";Integrated Security=True;";
         public static SqlConnection con = new SqlConnection(con_string);
 
 
@@ -212,5 +212,87 @@ namespace Hardware_Management_System
         {
             throw new NotImplementedException("LoadData with no parameters is not yet implemented.");
         }
+
+        //public static bool Validation(Form F)
+        //{
+        //    bool isValid = false;
+
+        //    int count = 0;
+
+        //    foreach (Control c in F.Controls)
+        //    {
+        //        if (Convert.ToString(c.Tag) != "" && Convert.ToString(c.Tag) != null)
+        //        {
+        //            if (c is Guna.UI.WinForms.GunaTextBox)
+        //            {
+        //                Guna.UI.WinForms.GunaTextBox t = (Guna.UI.WinForms.GunaTextBox)c;
+        //                if (t.Text.Trim() == "")
+        //                {
+        //                    t.BorderColor = Color.Red;
+        //                    t.FocusedBorderColor = Color.Red;
+        //                    t.FocusedForeColor = Color.Black;
+        //                    t.ForeColor = Color.Black;
+        //                    count++;
+        //                }
+        //                else
+        //                {
+        //                    t.BorderColor = Color.FromArgb(213, 218, 223);
+        //                    t.FocusedBorderColor = Color.FromArgb(30, 144, 255);
+        //                    t.FocusedForeColor = Color.FromArgb(30, 144, 255);
+        //                }
+        //            }
+        //        }
+
+        //        if (count == 0)
+        //        {
+        //            isValid = true;
+        //        }
+        //        else
+        //        {
+        //            isValid = false;
+        //        }
+        //    }
+
+        //    return isValid;
+        //}
+
+        public static bool Validation(Form F)
+        {
+            bool isValid = true; // Assume valid initially
+            int count = 0;
+
+            foreach (Control c in F.Controls)
+            {
+                if (!string.IsNullOrWhiteSpace(Convert.ToString(c.Tag)))
+                {
+                    if (c is Guna.UI.WinForms.GunaTextBox t)
+                    {
+                        if (string.IsNullOrWhiteSpace(t.Text))
+                        {
+                            // Mark textbox as invalid
+                            t.BorderColor = Color.Red;
+                            t.FocusedBorderColor = Color.Red;
+                            t.FocusedForeColor = Color.Black;
+                            t.ForeColor = Color.Black;
+
+                            count++;
+                        }
+                        else
+                        {
+                            // Reset to normal style
+                            t.BorderColor = Color.FromArgb(213, 218, 223);
+                            t.FocusedBorderColor = Color.FromArgb(30, 144, 255);
+                            t.FocusedForeColor = Color.FromArgb(30, 144, 255);
+                        }
+                    }
+                }
+            }
+
+            // Final result
+            isValid = count == 0;
+
+            return isValid;
+        }
+
     }
 }
